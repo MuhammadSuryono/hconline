@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/config/database.php';
+echo '<pre>';
+var_dump(realpath(__DIR__ . '/vendor/autoload.php'));
+echo '</pre>';
+exit();
+
+$db = new Database();
 ob_start();
 session_start();
 ?>
