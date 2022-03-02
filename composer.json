@@ -24,6 +24,7 @@
     "issues": "https://github.com/almasaeed2010/AdminLTE/issues"
   },
   "require": {
-    "vlucas/phpdotenv": "^5.4"
+    "vlucas/phpdotenv": "^5.4",
+    "ext-mysqli": "*"
   }
 }

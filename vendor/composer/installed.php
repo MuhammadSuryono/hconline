@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd28a2df13839848c981817bce3eff1d380faa117',
+        'reference' => '24b4ca6c26e38b486c4cf8b766494c75665d6762',
         'name' => 'almasaeed2010/adminlte',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd28a2df13839848c981817bce3eff1d380faa117',
+            'reference' => '24b4ca6c26e38b486c4cf8b766494c75665d6762',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(

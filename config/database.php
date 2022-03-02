@@ -1,18 +1,19 @@
 <?php
-require_once realpath(__DIR__ . '/vendor/autoload.php');
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+require_once dirname(__DIR__) . '/config/model.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 defined("MODE_APP") OR define("MODE_APP", "dev");
-defined("DB_APP") OR define("DB_APP", "budget");
-defined("DB_HOST") OR define("DB_HOST", "192.168.8.2");
-defined("DB_USER") OR define("DB_USER", "adam");
-defined("DB_PASS") OR define("DB_PASS", "Ad@mMR!db213");
-defined("DB_PORT") OR define("DB_PORT", "3306");
+defined("DB_APP") OR define("DB_APP", $_SERVER["DB_APP"]);
+defined("DB_HOST") OR define("DB_HOST",  $_SERVER["DB_HOST"]);
+defined("DB_USER") OR define("DB_USER",  $_SERVER["DB_USER"]);
+defined("DB_PASS") OR define("DB_PASS",  $_SERVER["DB_PASS"]);
+defined("DB_PORT") OR define("DB_PORT",  $_SERVER["DB_PORT"]);
 
 defined("APP_PATH") OR define("APP_PATH", dirname(__DIR__));
 
-class Database {
+class Database extends model {
     private $conn;
     private $dbUser = DB_USER;
     private $dbPass = DB_PASS;

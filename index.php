@@ -1,11 +1,12 @@
 <?php
-require_once __DIR__ . '/config/database.php';
-echo '<pre>';
-var_dump(realpath(__DIR__ . '/vendor/autoload.php'));
-echo '</pre>';
-exit();
-
+require_once __DIR__. '/config/database.php';
 $db = new Database();
+
+$koneksi = $db->connect();
+$db->load_database($koneksi);
+
+$video = $db->select("*")->from("video")->order_by("no", "DESC")->first();
+
 ob_start();
 session_start();
 ?>
@@ -83,15 +84,7 @@ session_start();
 			<script type="text/javascript">
 			var myvid = document.getElementById('myvideo');
 			var myvids = [
-				<?php
-				include "dist/koneksi.php";
-				$carisemuavideo = mysql_query("SELECT * FROM video ORDER BY no DESC");
-				while ($csv = mysql_fetch_array($carisemuavideo)){
-				?>
-			  "video/<?php echo $csv['file']; ?>",
-				<?php
-				}
-				?>
+			    "video/<?php echo $video['file']; ?>",
 				];
 			var activeVideo = 0;
 
@@ -130,11 +123,7 @@ session_start();
 
 		<div class="col-sm-4">
       <div class="col-padding">
-				<?php
-				$selectvideo = mysql_query("SELECT * FROM video ORDER BY no DESC LIMIT 1");
-				$sv = mysql_fetch_array($selectvideo);
-				?>
-					<video src="video/<?php echo $sv['file']; ?>" id="myvideo" width="400" height="250" controls autoplay style="background:black">
+					<video src="video/<?php echo $video['file']; ?>" id="myvideo" width="400" height="250" controls autoplay style="background:black">
 					</video>
       </div>
     </div>
